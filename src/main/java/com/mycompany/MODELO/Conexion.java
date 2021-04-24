@@ -11,7 +11,7 @@ public class Conexion {
      
     private String base="stockfinal";
     private String user="root";
-    private String pass="38580982";
+    private String pass="123";
     private String url="jdbc:mysql://localhost:3306/"+base;
     
     private String driver="com.mysql.jdbc.Driver";

@@ -1,5 +1,5 @@
 package main;
-import VISTA.PantallaPrincipal;
+import CONTROLADOR.Control;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,6 +28,6 @@ public class Inicio {
         } catch (Exception ex) {
             System.err.println(ex);
         }
-        PantallaPrincipal pn= new PantallaPrincipal();
+        Control pn= new Control();
     }
 }
