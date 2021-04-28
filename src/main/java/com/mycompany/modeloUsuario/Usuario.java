@@ -1,6 +1,7 @@
-package modeloUsuario;
+package com.mycompany.modeloUsuario;
 
-import MODELO.Persona;
+import com.mycompany.MODELO.Persona;
+
 
 
 

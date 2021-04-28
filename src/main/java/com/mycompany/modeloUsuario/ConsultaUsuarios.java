@@ -1,6 +1,6 @@
-package modeloUsuario;
+package com.mycompany.modeloUsuario;
 
-import MODELO.Conexion;
+import com.mycompany.MODELO.Conexion;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

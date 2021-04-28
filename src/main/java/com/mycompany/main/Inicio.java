@@ -1,5 +1,6 @@
-package main;
-import CONTROLADOR.Control;
+package com.mycompany.main;
+
+import com.mycompany.CONTROLADOR.Control;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ public class Inicio {
         Connection con=null;
         PreparedStatement ps = null;
         ResultSet rs;
+        Control pn;
         try {
             Class.forName(driver);  
             try {
@@ -28,6 +30,6 @@ public class Inicio {
         } catch (Exception ex) {
             System.err.println(ex);
         }
-        Control pn= new Control();
+        pn= new Control();
     }
 }

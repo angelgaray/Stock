@@ -1,4 +1,4 @@
-package MODELO;
+package com.mycompany.MODELO;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;

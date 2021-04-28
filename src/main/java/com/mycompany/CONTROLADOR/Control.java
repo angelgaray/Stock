@@ -1,15 +1,6 @@
-package CONTROLADOR;
+package com.mycompany.CONTROLADOR;
 
-import MODELO.ConsultaEmpleado;
-import MODELO.Empleado;
-import MODELO.Marcas;
-import MODELO.Producto;
-import MODELO.Proveedor;
-import MODELO.categoriaProductos;
-import MODELO.consultaCategoriaProductos;
-import MODELO.consultaMarcas;
-import MODELO.consultaProducto;
-import MODELO.consultaProveedor;
+
 import VISTA.PantallaCategoriaProductos;
 import VISTA.PantallaEmpleado;
 import VISTA.PantallaEntradasSalidas;
@@ -18,6 +9,16 @@ import VISTA.PantallaPrincipal;
 import VISTA.PantallaProductos;
 import VISTA.PantallaProveedor;
 import VISTA.PantallaUsuario;
+import com.mycompany.MODELO.ConsultaEmpleado;
+import com.mycompany.MODELO.Empleado;
+import com.mycompany.MODELO.Marcas;
+import com.mycompany.MODELO.Producto;
+import com.mycompany.MODELO.Proveedor;
+import com.mycompany.MODELO.categoriaProductos;
+import com.mycompany.MODELO.consultaCategoriaProductos;
+import com.mycompany.MODELO.consultaMarcas;
+import com.mycompany.MODELO.consultaProducto;
+import com.mycompany.MODELO.consultaProveedor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
@@ -834,10 +835,9 @@ public class Control implements ActionListener {
              
     }
  
-    public static void main(String[] args) {
+    public static void main(String [ ] args) {
 
-        Control ctrl;
-      ctrl = new Control();
+        Control ctrl = new Control();
     }
 }
 

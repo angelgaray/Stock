@@ -1,4 +1,4 @@
-package MODELO;
+package com.mycompany.MODELO;
 
 
 public class Producto {

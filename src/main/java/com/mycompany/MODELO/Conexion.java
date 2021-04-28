@@ -1,4 +1,4 @@
-package MODELO;
+package com.mycompany.MODELO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,6 +39,8 @@ public class Conexion {
         return con;
         
     }
-    
+    public static void main(String [] args){
+        Conexion cn= new Conexion();
+    }
 
 }

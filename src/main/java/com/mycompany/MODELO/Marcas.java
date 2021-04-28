@@ -1,5 +1,5 @@
 
-package MODELO;
+package com.mycompany.MODELO;
 
 public class Marcas {
     private int idMarca;
