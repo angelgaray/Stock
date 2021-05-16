@@ -9,6 +9,7 @@ public class Producto {
     private int idCategoria;
     private double stockMinimo;
     private int codigo;
+    private int idMarca;
 
     public int getIdProducto() {
         return idProducto;
@@ -65,6 +66,15 @@ public class Producto {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    public int getIdMarca() {
+        return idMarca;
+    }
+
+    public void setIdMarca(int idMarca) {
+        this.idMarca = idMarca;
+    }
+    
     
     
     

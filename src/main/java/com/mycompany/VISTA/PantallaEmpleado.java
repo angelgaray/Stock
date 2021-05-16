@@ -1,5 +1,5 @@
 
-package VISTA;
+package com.mycompany.VISTA;
 
 //import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDateChooser;

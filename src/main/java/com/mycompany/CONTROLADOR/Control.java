@@ -1,14 +1,13 @@
 package com.mycompany.CONTROLADOR;
 
 
-import VISTA.PantallaCategoriaProductos;
-import VISTA.PantallaEmpleado;
+import com.mycompany.VISTA.PantallaCategoriaProductos;
+import com.mycompany.VISTA.PantallaEmpleado;
 import VISTA.PantallaEntradasSalidas;
-import VISTA.PantallaMarcas;
-import VISTA.PantallaPrincipal;
-import VISTA.PantallaProductos;
-import VISTA.PantallaProveedor;
-import VISTA.PantallaUsuario;
+import com.mycompany.VISTA.PantallaMarcas;
+import com.mycompany.VISTA.PantallaPrincipal;
+import com.mycompany.VISTA.PantallaProductos;
+
 import com.mycompany.MODELO.ConsultaEmpleado;
 import com.mycompany.MODELO.Empleado;
 import com.mycompany.MODELO.Marcas;
@@ -19,6 +18,8 @@ import com.mycompany.MODELO.consultaCategoriaProductos;
 import com.mycompany.MODELO.consultaMarcas;
 import com.mycompany.MODELO.consultaProducto;
 import com.mycompany.MODELO.consultaProveedor;
+import com.mycompany.VISTA.PantallaProveedor;
+import com.mycompany.VISTA.PantallaUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;

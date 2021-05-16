@@ -11,10 +11,10 @@ public class Conexion {
      
     private String base="stockfinal";
     private String user="root";
-    private String pass="123";
+    private String pass="1234";
     private String url="jdbc:mysql://localhost:3306/"+base;
     
-    private String driver="com.mysql.jdbc.Driver";
+    private String driver="com.mysql.cj.jdbc.Driver";
     public Connection con=null;
     public PreparedStatement ps = null;
     public ResultSet rs;

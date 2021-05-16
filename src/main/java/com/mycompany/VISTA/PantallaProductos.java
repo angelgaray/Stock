@@ -1,4 +1,4 @@
-package VISTA;
+package com.mycompany.VISTA;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

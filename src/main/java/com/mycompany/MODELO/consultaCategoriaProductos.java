@@ -125,7 +125,7 @@ public class consultaCategoriaProductos extends Conexion {
             ps = null;
             rs=null;
             con = getConnection(); 
-            String sql="SELECT count(*) as total from categoriaProductos";
+            String sql="SELECT count(*) as total from categoriaproductos";
             
             try {
                 ps= con.prepareStatement(sql);
@@ -152,7 +152,7 @@ public class consultaCategoriaProductos extends Conexion {
             rs=null;
             con = getConnection(); 
             int o=0;
-            String sqll="Select * from categoriaProductos";
+            String sqll="Select * from categoriaproductos";
             
             try {
               

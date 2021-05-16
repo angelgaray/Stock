@@ -1,4 +1,4 @@
-package VISTA;
+package com.mycompany.VISTA;
 
 import java.awt.Color;
 import javax.swing.JButton;
@@ -48,7 +48,7 @@ public class PantallaPrincipal {
         
         
         
-        
+        ventPrincipal.setTitle("Pantalla Principal");
         ventPrincipal.setLayout(null);
         ventPrincipal.setDefaultCloseOperation(3);
         ventPrincipal.setSize(500,500);
