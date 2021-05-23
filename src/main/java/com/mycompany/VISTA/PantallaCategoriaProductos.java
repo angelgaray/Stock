@@ -83,6 +83,7 @@ public class PantallaCategoriaProductos {
         ventCatProductos.setResizable(false);
         ventCatProductos.setSize(600,600);
         ventCatProductos.setVisible(false);
+        ventCatProductos.setTitle("CATEGORIA PRODUCTOS");
         
         cancelar();
         snumeros(txtIdCategoria);
@@ -188,5 +189,6 @@ public class PantallaCategoriaProductos {
       }}});}
     public static void main(String[] args) {
         PantallaCategoriaProductos p= new PantallaCategoriaProductos();
+        p.ventCatProductos.setVisible(true);
     }
 }

@@ -140,7 +140,8 @@ public class Control implements ActionListener {
          this.pProductos.btnConsultar.addActionListener(this);
          this.pProductos.btnModificar.addActionListener(this);
          this.pProductos.btnAtras.addActionListener(this);
-         this.pProductos.categoria.addActionListener(this);
+         this.pProductos.cbcategoria.addActionListener(this);
+         this.pProductos.cbMarcas.addActionListener(this);
          
     //     ESCUCADOR DE EVENTOS PANTALLA CATEGORIA PRODUCTOS
          
@@ -220,21 +221,37 @@ public class Control implements ActionListener {
             pPrincipal.ventPrincipal.setVisible(false);
             pProductos.botonCancelar();
             
-//          conCateProducto.llenarCombo(modCateProducto);
+          //
+//            pProductos.cbcategoria.addItem(modCateProducto.getDescripcion());
+            //LLENA COMBO BOX CATEGORIA DE PRODUCTO EN PANTALLA PRODUCTO
+            conCateProducto.contar(); // metodo que permite contar la cantidad de registros que se encuentran categoriaProducto
             
-          
-            pProductos.categoria.addItem(modCateProducto.getDescripcion());
-        
-            conCateProducto.contar();
-            
-            pProductos.categoria.removeAllItems();
-            pProductos.categoria.addItem("<Seleccione>");
+            pProductos.cbcategoria.removeAllItems(); // eleimna todos los item de jcombo box
+            pProductos.cbcategoria.addItem("<Seleccione>");
 
             conCateProducto.cargarCategoriaProductos();
 
             for (Object arrayCategoria : conCateProducto.arrayCategoria) {
-                pProductos.categoria.addItem(arrayCategoria);
+                pProductos.cbcategoria.addItem(arrayCategoria);
             } 
+            
+            
+//            pProductos.cbMarcas.addItem(modMarcas.getDescripcion());
+        
+
+            // LLENA COMBO BOX DE MARCAS EN PANTALLA PRODUCTO
+            conMarcas.contarMarcas();
+            
+            pProductos.cbMarcas.removeAllItems();
+            pProductos.cbMarcas.addItem("<Seleccione>");
+
+            conMarcas.cargarMarcasProductos();
+
+            for (Object arrayMarcas : conMarcas.arrayMarcas) {
+                pProductos.cbMarcas.addItem(arrayMarcas);
+            } 
+            
+            
         }
         
         if (e.getSource().equals(pPrincipal.btnEmpleados)) {
@@ -434,27 +451,48 @@ public class Control implements ActionListener {
         }
          }
                 
-               // ejecutor de evetos pantallaProducto
+               // EJECUTA EVENTOS DE PANTALLA PRODUCTOS
                 
-                if (e.getSource().equals(pProductos.categoria)) {
-                    if (pProductos.categoria.getSelectedIndex()!=0) {
+                if (e.getSource().equals(pProductos.cbcategoria)) {
+                    if (pProductos.cbcategoria.getSelectedIndex()!=0) {
                     
-                    JOptionPane.showMessageDialog(null, "Categoria Seleccionada "+pProductos.categoria.getSelectedItem());
+//                    JOptionPane.showMessageDialog(null, "Categoria Seleccionada "+pProductos.cbcategoria.getSelectedItem());
 
-                    if( pProductos.categoria.getSelectedItem()!=null){
-                        if(pProductos.categoria.getSelectedIndex()!=0 ){
-                    modCateProducto.setDescripcion(pProductos.categoria.getSelectedItem().toString());
+                    if( pProductos.cbcategoria.getSelectedItem()!=null){
+                        if(pProductos.cbcategoria.getSelectedIndex()!=0 ){
+                    modCateProducto.setDescripcion(pProductos.cbcategoria.getSelectedItem().toString());
                     if(conCateProducto.buscarIdCategoria(modCateProducto)){
                         System.out.println(modCateProducto.getIdCategoria());
                         pProductos.txtIdProducto.setText("");
                         pProductos.txtIdCategoria.setText(String.valueOf(modCateProducto.getIdCategoria()));
                         
                     }}
+                    }}
+                }
+                
+                
+                // BUSCA ID DE MARCA EN BASE DE DATOS
+                 if (e.getSource().equals(pProductos.cbMarcas)) {
+                    if (pProductos.cbMarcas.getSelectedIndex()!=0) {
+                    
+//                    JOptionPane.showMessageDialog(null, "Marca Seleccionada "+pProductos.cbMarcas.getSelectedItem());
+
+                    if( pProductos.cbMarcas.getSelectedItem()!=null){
+                        if(pProductos.cbMarcas.getSelectedIndex()!=0 ){
+                    modMarcas.setDescripcion(pProductos.cbMarcas.getSelectedItem().toString());
+                    if(conMarcas.buscarIdMarca(modMarcas)){
+                        System.out.println(modMarcas.getIdMarca());
+                        pProductos.txtIdMarca.setText("");
+                        pProductos.txtIdMarca.setText(String.valueOf(modMarcas.getIdMarca()));
+                        
+                    }}
                     }}}
+                
+                
                 if(e.getSource().equals(pProductos.btnCancelar)){
                    
                     pProductos.botonCancelar();
-                    pProductos.categoria.setSelectedIndex(0);
+                    pProductos.cbcategoria.setSelectedIndex(0);
                 }
                 
                 if(e.getSource().equals(pProductos.btnAtras)){
@@ -564,7 +602,7 @@ public class Control implements ActionListener {
              if (e.getSource().equals(pProductos.btnCargar)) {
                 
                  if (!pProductos.txtDescripcion.getText().isEmpty()&& !pProductos.txtIdCategoria.getText().isEmpty()&& 
-                     !pProductos.txtIdProducto.getText().isEmpty()&& !pProductos.txtMarca.getText().isEmpty()&& !pProductos.txtStock.getText().isEmpty()
+                     !pProductos.txtIdProducto.getText().isEmpty()&& !pProductos.txtIdMarca.getText().isEmpty()&& !pProductos.txtStock.getText().isEmpty()
                     && !pProductos.txtStockMinimo.getText().isEmpty()&& !pProductos.txtUMedida.getText().isEmpty()){
                      
                        modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));

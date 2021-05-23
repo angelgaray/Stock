@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class PantallaEmpleado{
+public final class PantallaEmpleado{
     
     public JFrame ventEmpleado;
     public JLabel etiIdEmpleado, etiApellido, etiPrimerNombre, etiSegundoNombre, etiFecNacimiento, 
@@ -21,7 +21,7 @@ public class PantallaEmpleado{
     
       public JDateChooser fechaNacimiento,fechaAlta,fechaBaja;
       
-    int xet=30;
+    int xeti=0;
     int xtxt=130;
     public PantallaEmpleado(){
         ventEmpleado= new JFrame();
@@ -32,7 +32,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtCodigo);
         
         etiIdEmpleado= new JLabel("Id Empleado");
-        etiIdEmpleado.setBounds(30, 30, 200, 30);
+        etiIdEmpleado.setBounds(xeti, 30, 200, 30);
         ventEmpleado.add(etiIdEmpleado);
         
         txtIdEmpleado= new JTextField();
@@ -40,7 +40,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtIdEmpleado);
         
         etiApellido= new JLabel("Apellido:");
-        etiApellido.setBounds(30, 70, 200, 30);
+        etiApellido.setBounds(xeti, 70, 200, 30);
         ventEmpleado.add( etiApellido);
         
         txtApellido= new JTextField();
@@ -48,7 +48,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtApellido);
         
         etiPrimerNombre= new JLabel("Primer Nombre:");
-        etiPrimerNombre.setBounds(30, 110, 200, 30);
+        etiPrimerNombre.setBounds(xeti, 110, 200, 30);
         ventEmpleado.add(etiPrimerNombre);
         
         txtPrimerNombre= new JTextField();
@@ -56,7 +56,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtPrimerNombre);
         
         etiSegundoNombre= new JLabel("Segundo Nombre:");
-        etiSegundoNombre.setBounds(30, 150, 200, 30);
+        etiSegundoNombre.setBounds(xeti, 150, 200, 30);
         ventEmpleado.add(etiSegundoNombre);
         
         txtSegundoNombre= new JTextField();
@@ -64,7 +64,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtSegundoNombre);
         
         etiFecNacimiento= new JLabel("Fecha Nacimiento:");
-        etiFecNacimiento.setBounds(30, 190, 200, 30);
+        etiFecNacimiento.setBounds(xeti, 190, 200, 30);
         ventEmpleado.add( etiFecNacimiento);
         
         fechaNacimiento= new JDateChooser();
@@ -72,7 +72,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(fechaNacimiento);
         
         etiJefe= new JLabel("Subcontratista:");
-        etiJefe.setBounds(30, 230, 200, 30);
+        etiJefe.setBounds(xeti, 230, 200, 30);
         ventEmpleado.add( etiJefe);
         
         txtJefe= new JTextField();
@@ -80,7 +80,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtJefe);
         
         etiDescripcion= new JLabel("Descripcion");
-        etiDescripcion.setBounds(30, 270, 200, 30);
+        etiDescripcion.setBounds(xeti, 270, 200, 30);
         ventEmpleado.add( etiDescripcion);
           
         txtDescripcion= new JTextField();
@@ -88,7 +88,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtDescripcion);
         
         etiTelefono= new JLabel("Telefono");
-        etiTelefono.setBounds(30, 310, 200, 30);
+        etiTelefono.setBounds(xeti, 310, 200, 30);
         ventEmpleado.add( etiTelefono);
           
         txtTelefono= new JTextField();
@@ -96,7 +96,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(txtTelefono);
         
         etiFechaAlta= new JLabel("Fecha Alta:");
-        etiFechaAlta.setBounds(30, 350, 200, 30);
+        etiFechaAlta.setBounds(xeti, 350, 200, 30);
         ventEmpleado.add( etiFechaAlta);
         
         fechaAlta= new JDateChooser();
@@ -104,7 +104,7 @@ public class PantallaEmpleado{
         ventEmpleado.add(fechaAlta);
         
         etiFechaBaja= new JLabel("Fecha Baja:");
-        etiFechaBaja.setBounds(30, 390, 200, 30);
+        etiFechaBaja.setBounds(xeti, 390, 200, 30);
         ventEmpleado.add( etiFechaBaja);
         
         fechaBaja= new JDateChooser();

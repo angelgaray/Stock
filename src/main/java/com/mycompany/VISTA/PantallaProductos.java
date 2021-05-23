@@ -17,9 +17,9 @@ public class PantallaProductos{
      public JFrame ventProductos;
     public JLabel etiIdProducto, etiDescripcion,etiMarca, etiStock, etiUnidadMedida, 
             etiCategoria, etiStockMinimo;
-    public JTextField txtIdProducto, txtDescripcion, txtMarca, txtStock,txtStockMinimo,txtUMedida,txtIdCategoria;
+    public JTextField txtIdProducto, txtDescripcion, txtIdMarca, txtStock,txtStockMinimo,txtUMedida,txtIdCategoria;
     public JButton btnNuevo, btnCargar, btnModificar, btnConsultar,btnBuscar,btnActualizar,btnCancelar,btnAtras;
-    public JComboBox categoria;
+    public JComboBox cbcategoria,cbMarcas;
     
       
     int xet=30;
@@ -49,9 +49,14 @@ public class PantallaProductos{
         etiMarca.setBounds(30, 110, 200, 30);
         ventProductos.add(etiMarca);
         
-        txtMarca= new JTextField();
-        txtMarca.setBounds(130, 110, 200, 30);
-        ventProductos.add(txtMarca);
+        cbMarcas= new JComboBox();
+        cbMarcas.setBounds(130, 110, 200, 30);
+        cbMarcas.addItem("<Seleccione>");
+        ventProductos.add(cbMarcas);
+        
+        txtIdMarca= new JTextField();
+        txtIdMarca.setBounds(330, 140, 100, 30);
+        ventProductos.add(txtIdMarca);
         
         etiStock= new JLabel("Stock Actual:");
         etiStock.setBounds(30, 150, 200, 30);
@@ -74,10 +79,10 @@ public class PantallaProductos{
         etiCategoria.setBounds(30, 230, 200, 30);
         ventProductos.add(etiCategoria);
         
-        categoria= new JComboBox();
-        categoria.setBounds(130, 230, 200, 30);
-        categoria.addItem("<Seleccione>");
-        ventProductos.add( categoria);
+        cbcategoria= new JComboBox();
+        cbcategoria.setBounds(130, 230, 200, 30);
+        cbcategoria.addItem("<Seleccione>");
+        ventProductos.add(cbcategoria);
         
         txtIdCategoria= new JTextField();
         txtIdCategoria.setBounds(350, 230, 100, 30);
@@ -128,23 +133,14 @@ public class PantallaProductos{
         ventProductos.setDefaultCloseOperation(3);
         ventProductos.setSize(500,600);
         ventProductos.setVisible(false);
-        
-//        
-//        ventPrincipal.setDefaultCloseOperation(2);
-//        ventPrincipal.setSize(500,500);
-//        ventPrincipal.setVisible(true);
-        
-        
-//        botonCancelar();
-
- 
     
+        
         limitar();
-        sletras(txtMarca);
+        sletras(txtIdMarca);
         snumeros(txtStock);
         snumeros(txtIdProducto);
         snumeros(txtStockMinimo);
-        mayuscula(txtMarca);
+        mayuscula(txtIdMarca);
         mayuscula(txtStock);
         mayuscula(txtDescripcion);
         
@@ -159,10 +155,12 @@ public class PantallaProductos{
     btnConsultar.setEnabled(false);
     btnModificar.setEnabled(false);
     btnCancelar.setEnabled(true);
+    btnAtras.setEnabled(false);
     txtDescripcion.setEnabled(true);
     txtIdProducto.setEnabled(true);
-    categoria.setEnabled(true);
-    txtMarca.setEnabled(true);
+    cbcategoria.setEnabled(true);
+    cbMarcas.setEnabled(true);
+    txtIdMarca.setEnabled(true);
     txtStock.setEnabled(true);
     txtStockMinimo.setEnabled(true);
     txtUMedida.setEnabled(true);
@@ -170,9 +168,10 @@ public class PantallaProductos{
     }
     public void botonCancelar(){
     txtIdProducto.setEnabled(false);
-    txtMarca.setEnabled(false);
+    txtIdMarca.setEnabled(false);
     txtStock.setEnabled(false);
-    categoria.setEnabled(false);
+    cbcategoria.setEnabled(false);
+    cbMarcas.setEnabled(false);
     txtDescripcion.setEnabled(false);
     txtStockMinimo.setEnabled(false);
     txtUMedida.setEnabled(false);
@@ -183,17 +182,15 @@ public class PantallaProductos{
     btnCargar.setEnabled(false);
     btnConsultar.setEnabled(true);
     btnModificar.setEnabled(true);
-    btnCancelar.setEnabled(false);
-    
-        
-        
+    btnCancelar.setEnabled(false);  
+    btnAtras.setEnabled(true);
     }
     
     public void limpiar(){
     txtIdProducto.setText("");
     txtDescripcion.setText("");
-    categoria.setSelectedIndex(0);
-    txtMarca.setText("");
+    cbcategoria.setSelectedIndex(0);
+    txtIdMarca.setText("");
     txtStock.setText("");
     txtStockMinimo.setText("");
     }
@@ -208,10 +205,11 @@ public class PantallaProductos{
                    c=cad.charAt(0);
                    e.setKeyChar(c);
                    }}});}
+     
     public void limitar(){       
         txtIdProducto.setDocument(new LimitarCaracter(txtIdProducto,8));
         txtDescripcion.setDocument(new LimitarCaracter(txtDescripcion, 60));
-        txtMarca.setDocument(new LimitarCaracter(txtMarca,60));
+        txtIdMarca.setDocument(new LimitarCaracter(txtIdMarca,60));
         txtStock.setDocument(new LimitarCaracter(txtStock,60));
         txtStockMinimo.setDocument(new LimitarCaracter(txtStockMinimo, 10));
     }
@@ -239,7 +237,7 @@ public class PantallaProductos{
     public static void main(String [] args){
         PantallaProductos p= new PantallaProductos();
         p.txtIdProducto.setText("Id");
-        p.txtMarca.setText("Marca");
+        p.txtIdMarca.setText("Marca");
         p.txtDescripcion.setText("descripcion");
         p.txtStock.setText("stock");
         p.txtStockMinimo.setText("minimo");
