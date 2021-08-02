@@ -29,6 +29,8 @@ public class Conexion {
                 
             } catch (SQLException ex) {
               System.out.println(ex.getMessage());
+              JOptionPane.showMessageDialog(null, "Error al Conectar con la base de datos");
+              
             }
             
         } catch (ClassNotFoundException ex) {

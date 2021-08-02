@@ -11,7 +11,7 @@ services:
         image: mysql:5
         command: --default-authentication-plugin=mysql_native_password
         environment:
-          MYSQL_ROOT_PASSWORD: 123
+          MYSQL_ROOT_PASSWORD: 1234
           MYSQL_DATABASE: stockfinal
         ports: 
             - 3306:3306

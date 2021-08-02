@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Inicio {
@@ -13,7 +12,7 @@ public class Inicio {
     public static void main(String[] args) {
         String base="stockfinal";
         String user="root";
-        String pass="123";
+        String pass="1234";
         String url="jdbc:mysql://localhost:3306/"+base;
         String driver="com.mysql.jdbc.Driver";
         Connection con=null;

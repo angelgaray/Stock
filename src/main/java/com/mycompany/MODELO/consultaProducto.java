@@ -9,8 +9,8 @@ public class consultaProducto extends Conexion {
 
         ps = null;
         con = getConnection();
-        String sql = "INSERT INTO producto (idProducto,descripcion,marca, stock,unidadMedida,idCategoria,stockMinimo)"
-                + " VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO producto (idProducto,descripcion, stock,unidadMedida,idCategoria,stockMinimo,idmarca)"
+                + " VALUES(?,?,?,?,?,?,?)";
         try {
             ps = con.prepareStatement(sql);
 
@@ -20,6 +20,7 @@ public class consultaProducto extends Conexion {
             ps.setString(4, pro.getuMedida());
             ps.setInt(5, pro.getIdCategoria());
             ps.setDouble(6, pro.getStockMinimo());
+            ps.setInt(7, pro.getIdMarca());
 
             ps.execute();
             return true;

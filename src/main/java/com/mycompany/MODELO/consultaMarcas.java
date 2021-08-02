@@ -11,7 +11,7 @@ public class consultaMarcas extends Conexion{
 
         ps = null;
         con = getConnection();
-        String sql = "INSERT INTO Marcas (idMarca,descripcion)"
+        String sql = "INSERT INTO marcas (idMarca,descripcion)"
                 + " VALUES(?,?)";
         try {
             ps = con.prepareStatement(sql);
