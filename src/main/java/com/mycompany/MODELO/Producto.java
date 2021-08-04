@@ -1,5 +1,7 @@
 package com.mycompany.MODELO;
 
+import java.awt.Dimension;
+
 
 public class Producto {
     private int idProducto;
@@ -73,9 +75,5 @@ public class Producto {
 
     public void setIdMarca(int idMarca) {
         this.idMarca = idMarca;
-    }
-    
-    
-    
-    
+    }   
 }
