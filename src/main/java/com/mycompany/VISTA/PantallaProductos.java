@@ -1,5 +1,6 @@
 package com.mycompany.VISTA;
 
+import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
@@ -12,129 +13,142 @@ import javax.swing.JTextField;
  *
  * @author DAVID angelgaray59@gmail.com
  */
-public class PantallaProductos{
+public class PantallaProductos {
 
-     public JFrame ventProductos;
-    public JLabel etiIdProducto, etiDescripcion,etiMarca, etiStock, etiUnidadMedida, 
+    public JFrame ventProductos;
+    public JLabel etiIdProducto, etiDescripcion, etiMarca, etiStock, etiUnidadMedida,
             etiCategoria, etiStockMinimo;
-    public JTextField txtIdProducto, txtDescripcion, txtIdMarca, txtStock,txtStockMinimo,txtUMedida,txtIdCategoria;
-    public JButton btnNuevo, btnCargar, btnModificar, btnConsultar,btnBuscar,btnActualizar,btnCancelar,btnAtras;
-    public JComboBox cbcategoria,cbMarcas;
-    
-      
-    int xet=30;
-    int xtxt=130;
-    public PantallaProductos(){
-        ventProductos= new JFrame();
-        
-        etiIdProducto= new JLabel("Id Producto");
+    public JTextField txtIdProducto, txtDescripcion, txtIdMarca, txtStock, txtStockMinimo, txtUMedida, txtIdCategoria;
+    public JButton btnNuevo, btnCargar, btnModificar, btnConsultar, btnBuscar, btnActualizar, btnCancelar, btnAtras,btnIngresarMarcas,btnIngresarCategoria;
+    public JComboBox cbcategoria, cbMarcas;
+
+    Dimension screenSize;
+
+    public PantallaProductos() {
+        this.screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        double h = screenSize.getHeight();
+        double w = screenSize.getWidth();
+
+//        System.out.println("valor de X="+"w "+"es=ancho "+w  +"valor de y=h alto "+h);
+        System.out.println("alto= el valor de h es: " + h);
+        System.out.println("ancho= el valor de w es: " + w);
+
+        ventProductos = new JFrame();
+
+        etiIdProducto = new JLabel("Id Producto");
         etiIdProducto.setBounds(30, 30, 200, 30);
         ventProductos.add(etiIdProducto);
-        
-        txtIdProducto= new JTextField();
+
+        txtIdProducto = new JTextField();
         txtIdProducto.setBounds(130, 30, 200, 30);
+
         ventProductos.add(txtIdProducto);
         txtIdProducto.setText("id ");
-        
-        etiDescripcion= new JLabel("Descripcion");
+
+        etiDescripcion = new JLabel("Descripcion");
         etiDescripcion.setBounds(30, 70, 200, 30);
-        ventProductos.add( etiDescripcion);
-          
-        txtDescripcion= new JTextField();
+        ventProductos.add(etiDescripcion);
+
+        txtDescripcion = new JTextField();
         txtDescripcion.setBounds(130, 70, 200, 30);
         ventProductos.add(txtDescripcion);
-       
-       
-        etiMarca= new JLabel("Marca:");
+
+        etiMarca = new JLabel("Marca:");
         etiMarca.setBounds(30, 110, 200, 30);
         ventProductos.add(etiMarca);
-        
-        cbMarcas= new JComboBox();
+
+        cbMarcas = new JComboBox();
         cbMarcas.setBounds(130, 110, 200, 30);
         cbMarcas.addItem("<Seleccione>");
         ventProductos.add(cbMarcas);
-        
-        txtIdMarca= new JTextField();
-        txtIdMarca.setBounds(330, 140, 100, 30);
+
+        txtIdMarca = new JTextField();
+        txtIdMarca.setBounds(400, 140, 100, 30);
         ventProductos.add(txtIdMarca);
-        
-        etiStock= new JLabel("Stock Actual:");
+
+        etiStock = new JLabel("Stock Actual:");
         etiStock.setBounds(30, 150, 200, 30);
         ventProductos.add(etiStock);
-        
-        txtStock= new JTextField();
+
+        txtStock = new JTextField();
         txtStock.setBounds(130, 150, 200, 30);
         ventProductos.add(txtStock);
-        
-        etiUnidadMedida= new JLabel("U. Medida:");
+
+        etiUnidadMedida = new JLabel("U. Medida:");
         etiUnidadMedida.setBounds(30, 190, 200, 30);
         ventProductos.add(etiUnidadMedida);
-        
-        txtUMedida= new JTextField();
+
+        txtUMedida = new JTextField();
         txtUMedida.setBounds(130, 190, 200, 30);
         ventProductos.add(txtUMedida);
-        
-        
-        etiCategoria= new JLabel("Categoria:");
+
+        etiCategoria = new JLabel("Categoria:");
         etiCategoria.setBounds(30, 230, 200, 30);
         ventProductos.add(etiCategoria);
-        
-        cbcategoria= new JComboBox();
+
+        cbcategoria = new JComboBox();
         cbcategoria.setBounds(130, 230, 200, 30);
         cbcategoria.addItem("<Seleccione>");
         ventProductos.add(cbcategoria);
         
-        txtIdCategoria= new JTextField();
-        txtIdCategoria.setBounds(350, 230, 100, 30);
+        btnIngresarCategoria= new JButton("...");
+        btnIngresarCategoria.setBounds(340, 230, 50, 30);
+        ventProductos.add(btnIngresarCategoria);
+
+        txtIdCategoria = new JTextField();
+        txtIdCategoria.setBounds(400, 230, 100, 30);
         ventProductos.add(txtIdCategoria);
-        
-        etiStockMinimo= new JLabel("Stock Minimo");
+
+        etiStockMinimo = new JLabel("Stock Minimo");
         etiStockMinimo.setBounds(30, 270, 200, 30);
         ventProductos.add(etiStockMinimo);
-        
-        txtStockMinimo= new JTextField();
+
+        txtStockMinimo = new JTextField();
         txtStockMinimo.setBounds(130, 270, 200, 30);
         ventProductos.add(txtStockMinimo);
-        
-        btnNuevo= new JButton("Nuevo");
+
+        btnNuevo = new JButton("Nuevo");
         btnNuevo.setBounds(30, 430, 100, 30);
-        ventProductos.add( btnNuevo);
-          
-        btnCargar= new JButton("Cargar");
+        ventProductos.add(btnNuevo);
+
+        btnCargar = new JButton("Cargar");
         btnCargar.setBounds(140, 430, 100, 30);
         ventProductos.add(btnCargar);
-        
-        btnModificar= new JButton("Modificar");
+
+        btnModificar = new JButton("Modificar");
         btnModificar.setBounds(250, 430, 100, 30);
-        ventProductos.add( btnModificar);
-          
-        btnConsultar= new JButton("Consultar");
+        ventProductos.add(btnModificar);
+
+        btnConsultar = new JButton("Consultar");
         btnConsultar.setBounds(360, 430, 100, 30);
         ventProductos.add(btnConsultar);
-        
-        btnBuscar= new JButton("Buscar");
-        btnBuscar.setBounds(350, 30, 100, 30);
-        ventProductos.add( btnBuscar);
-          
-        btnActualizar= new JButton("Actualizar");
-        btnActualizar.setBounds(350, 70, 100, 30);
+
+        btnBuscar = new JButton("Buscar");
+        btnBuscar.setBounds(400, 30, 100, 30);
+        ventProductos.add(btnBuscar);
+
+        btnActualizar = new JButton("Actualizar");
+        btnActualizar.setBounds(400, 70, 100, 30);
         ventProductos.add(btnActualizar);
         
-        btnCancelar= new JButton("Cancelar");
-        btnCancelar.setBounds(350, 110, 100, 30);
+        btnIngresarMarcas= new JButton("...");
+        btnIngresarMarcas.setBounds(340, 110, 50, 30);
+        ventProductos.add(btnIngresarMarcas);
+
+        btnCancelar = new JButton("Cancelar");
+        btnCancelar.setBounds(400, 110, 100, 30);
         ventProductos.add(btnCancelar);
-        
-        btnAtras= new JButton("Atras");
-        btnAtras.setBounds(360, 470,100, 30);
+
+        btnAtras = new JButton("Atras");
+        btnAtras.setBounds(360, 470, 100, 30);
         ventProductos.add(btnAtras);
-        
+
         ventProductos.setLayout(null);
         ventProductos.setTitle("PRODUCTOS");
         ventProductos.setDefaultCloseOperation(3);
-        ventProductos.setSize(500,600);
+        ventProductos.setSize(600, 600);
         ventProductos.setVisible(false);
-    
-        
+
         limitar();
         sletras(txtIdMarca);
         snumeros(txtStock);
@@ -143,106 +157,119 @@ public class PantallaProductos{
         mayuscula(txtIdMarca);
         mayuscula(txtStock);
         mayuscula(txtDescripcion);
-        
-        
-    } 
-    public void botonNuevo(){
-        
-    btnNuevo.setEnabled(false);
-    btnActualizar.setEnabled(false);
-    btnBuscar.setEnabled(false);
-    btnCargar.setEnabled(true);
-    btnConsultar.setEnabled(false);
-    btnModificar.setEnabled(false);
-    btnCancelar.setEnabled(true);
-    btnAtras.setEnabled(false);
-    txtDescripcion.setEnabled(true);
-    txtIdProducto.setEnabled(true);
-    cbcategoria.setEnabled(true);
-    cbMarcas.setEnabled(true);
-    txtIdMarca.setEnabled(true);
-    txtStock.setEnabled(true);
-    txtStockMinimo.setEnabled(true);
-    txtUMedida.setEnabled(true);
-    
+
     }
-    public void botonCancelar(){
-    txtIdProducto.setEnabled(false);
-    txtIdMarca.setEnabled(false);
-    txtStock.setEnabled(false);
-    cbcategoria.setEnabled(false);
-    cbMarcas.setEnabled(false);
-    txtDescripcion.setEnabled(false);
-    txtStockMinimo.setEnabled(false);
-    txtUMedida.setEnabled(false);
-    
-    btnNuevo.setEnabled(true);
-    btnActualizar.setEnabled(false);
-    btnBuscar.setEnabled(false);
-    btnCargar.setEnabled(false);
-    btnConsultar.setEnabled(true);
-    btnModificar.setEnabled(true);
-    btnCancelar.setEnabled(false);  
-    btnAtras.setEnabled(true);
+
+    public void botonNuevo() {
+
+        btnNuevo.setEnabled(false);
+        btnActualizar.setEnabled(false);
+        btnBuscar.setEnabled(false);
+        btnCargar.setEnabled(true);
+        btnConsultar.setEnabled(false);
+        btnModificar.setEnabled(false);
+        btnCancelar.setEnabled(true);
+        btnAtras.setEnabled(false);
+        txtDescripcion.setEnabled(true);
+        txtIdProducto.setEnabled(true);
+        cbcategoria.setEnabled(true);
+        cbMarcas.setEnabled(true);
+        txtIdMarca.setEnabled(true);
+        txtStock.setEnabled(true);
+        txtStockMinimo.setEnabled(true);
+        txtUMedida.setEnabled(true);
+
     }
-    
-    public void limpiar(){
-    txtIdProducto.setText("");
-    txtDescripcion.setText("");
-    cbcategoria.setSelectedIndex(0);
-    txtIdMarca.setText("");
-    txtStock.setText("");
-    txtStockMinimo.setText("");
+
+    public void botonCancelar() {
+        txtIdProducto.setEnabled(false);
+        txtIdMarca.setEnabled(false);
+        txtStock.setEnabled(false);
+        cbcategoria.setEnabled(false);
+        cbMarcas.setEnabled(false);
+        txtDescripcion.setEnabled(false);
+        txtStockMinimo.setEnabled(false);
+        txtUMedida.setEnabled(false);
+
+        btnNuevo.setEnabled(true);
+        btnActualizar.setEnabled(false);
+        btnBuscar.setEnabled(false);
+        btnCargar.setEnabled(false);
+        btnConsultar.setEnabled(true);
+        btnModificar.setEnabled(true);
+        btnCancelar.setEnabled(false);
+        btnAtras.setEnabled(true);
     }
-    
-     public void mayuscula(JTextField a){
-           a.addKeyListener(new KeyAdapter() {
-           @Override
-           public void keyTyped(KeyEvent e){
-               char c=e.getKeyChar();//variable que estemos ingresando          
-                 if(Character.isLowerCase(c)){
-                   String cad=(""+c).toUpperCase();
-                   c=cad.charAt(0);
-                   e.setKeyChar(c);
-                   }}});}
-     
-    public void limitar(){       
-        txtIdProducto.setDocument(new LimitarCaracter(txtIdProducto,8));
+
+    public void limpiar() {
+        txtIdProducto.setText("");
+        txtDescripcion.setText("");
+        cbcategoria.setSelectedIndex(0);
+        cbMarcas.setSelectedIndex(0);
+        txtIdMarca.setText("");
+        txtStock.setText("");
+        txtStockMinimo.setText("");
+        txtUMedida.setText("");
+        txtIdCategoria.setText("");
+    }
+
+    public void mayuscula(JTextField a) {
+        a.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();//variable que estemos ingresando          
+                if (Character.isLowerCase(c)) {
+                    String cad = ("" + c).toUpperCase();
+                    c = cad.charAt(0);
+                    e.setKeyChar(c);
+                }
+            }
+        });
+    }
+
+    public void limitar() {
+        txtIdProducto.setDocument(new LimitarCaracter(txtIdProducto, 8));
         txtDescripcion.setDocument(new LimitarCaracter(txtDescripcion, 60));
-        txtIdMarca.setDocument(new LimitarCaracter(txtIdMarca,60));
-        txtStock.setDocument(new LimitarCaracter(txtStock,60));
+        txtIdMarca.setDocument(new LimitarCaracter(txtIdMarca, 60));
+        txtStock.setDocument(new LimitarCaracter(txtStock, 60));
         txtStockMinimo.setDocument(new LimitarCaracter(txtStockMinimo, 10));
     }
-    
-    public void sletras(JTextField a){ //el q vamos a usar 
-           a.addKeyListener(new KeyAdapter() {
-           @Override
-           public void keyTyped(KeyEvent e){
-               char c=e.getKeyChar();//variable que estemos ingresando  
-               if(!Character.isLetter(c) && !Character.isSpaceChar(c)){
-                   ventProductos.getToolkit().beep();
-                   e.consume();//no permite ingresr numero
-      }}});}
-       
-    public void snumeros(JTextField a){ // el tipo dobjeto que vamos a usar + una variable 
-           a.addKeyListener(new KeyAdapter() {
-           @Override
-           public void keyTyped(KeyEvent e){
-               char c=e.getKeyChar();//variable que estemos ingresando
-                 if(!Character.isDigit(c)){
-                   ventProductos.getToolkit().beep();
-                   e.consume();//no permite ingresar letras
-      }}});}
-    
-    public static void main(String [] args){
-        PantallaProductos p= new PantallaProductos();
+
+    public void sletras(JTextField a) { //el q vamos a usar 
+        a.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();//variable que estemos ingresando  
+                if (!Character.isLetter(c) && !Character.isSpaceChar(c)) {
+                    ventProductos.getToolkit().beep();
+                    e.consume();//no permite ingresr numero
+                }
+            }
+        });
+    }
+
+    public void snumeros(JTextField a) { // el tipo dobjeto que vamos a usar + una variable 
+        a.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();//variable que estemos ingresando
+                if (!Character.isDigit(c)) {
+                    ventProductos.getToolkit().beep();
+                    e.consume();//no permite ingresar letras
+                }
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        PantallaProductos p = new PantallaProductos();
         p.txtIdProducto.setText("Id");
         p.txtIdMarca.setText("Marca");
         p.txtDescripcion.setText("descripcion");
         p.txtStock.setText("stock");
         p.txtStockMinimo.setText("minimo");
         p.ventProductos.setVisible(true);
-      
+
     }
-    
+
 }

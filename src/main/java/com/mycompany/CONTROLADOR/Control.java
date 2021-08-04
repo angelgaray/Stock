@@ -129,6 +129,8 @@ public class Control implements ActionListener {
         this.pProductos.btnAtras.addActionListener(this);
         this.pProductos.cbcategoria.addActionListener(this);
         this.pProductos.cbMarcas.addActionListener(this);
+        this.pProductos.btnIngresarMarcas.addActionListener(this);
+        this.pProductos.btnIngresarCategoria.addActionListener(this);
 
         //     ESCUCADOR DE EVENTOS PANTALLA CATEGORIA PRODUCTOS
         this.pCateProductos.btnCancelar.addActionListener(this);
@@ -323,12 +325,11 @@ public class Control implements ActionListener {
 
                 modEmpleado.setIdEmpleado(Integer.parseInt(pEmpleado.txtIdEmpleado.getText()));
                 if (conEmpleado.buscar(modEmpleado)) {
-                    JOptionPane.showMessageDialog(null, "Registro Localizado");
+                    JOptionPane.showMessageDialog(this.pEmpleado.ventEmpleado, "Registro Localizado","Confirmación",1);
                     SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
                     pEmpleado.txtApellido.setText(modEmpleado.getApellido());
                     pEmpleado.txtPrimerNombre.setText(modEmpleado.getNombre());
                     pEmpleado.txtSegundoNombre.setText(modEmpleado.getSegundoNombre());
-////////////                      dfdd
                     pEmpleado.fechaNacimiento.setDate(Date.valueOf(modEmpleado.getFechaNacimiento()));
                     pEmpleado.txtJefe.setText(modEmpleado.getJefe());
                     pEmpleado.txtDescripcion.setText(modEmpleado.getDescripcion());
@@ -343,7 +344,7 @@ public class Control implements ActionListener {
                     pEmpleado.desbloquear();
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Registro No encontrado");
+                    JOptionPane.showMessageDialog(this.pEmpleado.ventEmpleado, "Registro No Localizado","Error",0);
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese idEmpleado", "Error", 0);
@@ -392,7 +393,7 @@ public class Control implements ActionListener {
 
                 modEmpleado.setIdEmpleado(Integer.parseInt(pEmpleado.txtIdEmpleado.getText()));
                 if (conEmpleado.buscar(modEmpleado)) {
-                    JOptionPane.showMessageDialog(null, "Registro Localizado");
+                    JOptionPane.showMessageDialog(this.pEmpleado.ventEmpleado, "Registro Localizado","Confirmación",1);
                     SimpleDateFormat formato = new SimpleDateFormat("YYYY-MM-dd");
                     pEmpleado.txtApellido.setText(modEmpleado.getApellido());
                     pEmpleado.txtPrimerNombre.setText(modEmpleado.getNombre());
@@ -411,7 +412,7 @@ public class Control implements ActionListener {
                     pEmpleado.txtCodigo.setText(Integer.toString(modEmpleado.getIdEmpleado()));
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Registro No encontrado");
+                    JOptionPane.showMessageDialog(this.pEmpleado.ventEmpleado, "Registro No Localizado","Error",0);
                 }
             }
         }
@@ -451,6 +452,20 @@ public class Control implements ActionListener {
                 }
             }
         }
+        
+        if(e.getSource().equals(pProductos.btnIngresarMarcas)){
+            
+            pProductos.ventProductos.setVisible(false);
+            pMarcas.ventMarcas.setVisible(true);
+            
+        }
+        
+        if(e.getSource().equals(pProductos.btnIngresarCategoria)){
+            
+            pProductos.ventProductos.setVisible(false);
+            pCateProductos.ventCatProductos.setVisible(true);
+            
+        }
 
         if (e.getSource().equals(pProductos.btnCancelar)) {
 
@@ -468,7 +483,11 @@ public class Control implements ActionListener {
         if (e.getSource().equals(pProductos.btnNuevo)) {
             pProductos.botonNuevo();
             pProductos.txtIdProducto.requestFocus();
-
+            
+            conProducto.valorMaxIdProducto(modProducto);
+            
+            pProductos.txtIdProducto.setText(Integer.toString(modProducto.getIdProducto()+1));
+            
         }
 
 //            CATEGORIA PRODUCTOS
@@ -743,7 +762,7 @@ public class Control implements ActionListener {
 
                 modProveedor.setIdProveedor(Double.parseDouble(pProveedor.txtIdProveedor.getText()));
                 if (conProveedor.buscar(modProveedor)) {
-                    JOptionPane.showMessageDialog(null, "Registro Localizado");
+                    JOptionPane.showMessageDialog(this.pProveedor.ventProveedor, "Registro Localizado","Confirmación",1);
 
                     pProveedor.txtRazonSocial.setText(modProveedor.getRazonSocial());
                     pProveedor.txtDescripcion.setText(modProveedor.getDescripcion());
@@ -754,12 +773,12 @@ public class Control implements ActionListener {
                     pProveedor.btnModificar.setEnabled(true);
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Registro No encontrado");
+                    JOptionPane.showMessageDialog(this.pProveedor.ventProveedor, "Registro No Localizado","Error",0);
                     pProveedor.limpiar();
                     pProveedor.btnModificar.setEnabled(false);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Ingrese idProveedor", "Error", 0);
+                JOptionPane.showMessageDialog(this.pProveedor.ventProveedor, "Ingrese idProveedor", "Error", 0);
             }
         }
 

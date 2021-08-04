@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class consultaProducto extends Conexion {
+  
 
     public boolean registrar(Producto pro) {
 
@@ -131,4 +132,64 @@ public class consultaProducto extends Conexion {
             }
         }
     }
+
+    public boolean valorMaxIdProducto(Producto pro) {
+        int conta;
+        ps = null;
+        rs = null;
+        con = getConnection();
+        String sql ="SELECT MAX(idproducto) as total from producto";
+
+        try {
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("paso el next");
+
+                    System.out.println(conta=rs.getInt("Total"));
+                    pro.setIdProducto(conta);
+
+                return true;
+
+            }
+            return false;
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+            return false;
+        } finally {
+            try {
+                con.close();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+    
+//      public void contarProductos(){
+//            
+//            ps = null;
+//            rs=null;
+//            con = getConnection(); 
+//            String sql="SELECT count(*) as total from producto";
+//            
+//            try {
+//                ps= con.prepareStatement(sql);
+//                rs = ps.executeQuery();
+//              
+//               if(rs.next()){
+//                   conta=rs.getInt("Total");
+//               } 
+//            }catch (SQLException ex) { 
+//                JOptionPane.showMessageDialog(null, ex.getMessage());
+//            }
+//            finally{
+//                try {
+//                    con.close();
+//                } catch (SQLException ex) {
+//                   System.out.println(ex);
+//                }
+//            }
+//    }
 }
