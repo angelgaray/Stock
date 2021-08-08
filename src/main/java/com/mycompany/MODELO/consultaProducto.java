@@ -111,6 +111,7 @@ public class consultaProducto extends Conexion {
             if (rs.next()) {
                 pro.setIdProducto(rs.getInt("idProducto"));
                 pro.setDescripcion(rs.getString("descripcion"));
+                pro.setIdMarca(rs.getInt("idMarca"));
                 pro.setStock(rs.getDouble("stock"));
                 pro.setuMedida(rs.getString("unidadMedida"));
                 pro.setIdCategoria(rs.getInt("idCategoria"));
@@ -166,30 +167,4 @@ public class consultaProducto extends Conexion {
             }
         }
     }
-    
-//      public void contarProductos(){
-//            
-//            ps = null;
-//            rs=null;
-//            con = getConnection(); 
-//            String sql="SELECT count(*) as total from producto";
-//            
-//            try {
-//                ps= con.prepareStatement(sql);
-//                rs = ps.executeQuery();
-//              
-//               if(rs.next()){
-//                   conta=rs.getInt("Total");
-//               } 
-//            }catch (SQLException ex) { 
-//                JOptionPane.showMessageDialog(null, ex.getMessage());
-//            }
-//            finally{
-//                try {
-//                    con.close();
-//                } catch (SQLException ex) {
-//                   System.out.println(ex);
-//                }
-//            }
-//    }
 }

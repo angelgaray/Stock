@@ -159,6 +159,25 @@ public class PantallaProductos {
         mayuscula(txtDescripcion);
 
     }
+    
+     public void activarModificaciones(){
+    txtIdCategoria.setEnabled(true);
+    btnBuscar.setEnabled(false);
+    btnCancelar.setEnabled(true);
+    btnAtras.setEnabled(false);
+    txtIdProducto.requestFocus();
+    btnNuevo.setEnabled(false);
+    btnModificar.setEnabled(false);
+    btnActualizar.setEnabled(true);
+    btnConsultar.setEnabled(false);
+    txtDescripcion.setEnabled(true);
+    cbMarcas.setEnabled(true);
+    txtStock.setEnabled(true);
+    txtUMedida.setEnabled(true);
+    cbcategoria.setEnabled(true);
+    txtStockMinimo.setEnabled(true);
+    
+    }
 
     public void botonNuevo() {
 
@@ -179,6 +198,18 @@ public class PantallaProductos {
         txtStockMinimo.setEnabled(true);
         txtUMedida.setEnabled(true);
 
+    }
+     public void activarConsulta(){
+     txtIdProducto.setEnabled(true);
+     btnBuscar.setEnabled(true);
+     txtIdProducto.requestFocus();
+     btnConsultar.setEnabled(false);
+     btnCancelar.setEnabled(true);
+     btnNuevo.setEnabled(false);
+     btnModificar.setEnabled(false);
+     btnAtras.setEnabled(false);
+     
+     
     }
 
     public void botonCancelar() {

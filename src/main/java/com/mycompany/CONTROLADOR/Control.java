@@ -438,7 +438,6 @@ public class Control implements ActionListener {
         if (e.getSource().equals(pProductos.cbMarcas)) {
             if (pProductos.cbMarcas.getSelectedIndex() != 0) {
 
-//                    JOptionPane.showMessageDialog(null, "Marca Seleccionada "+pProductos.cbMarcas.getSelectedItem());
                 if (pProductos.cbMarcas.getSelectedItem() != null) {
                     if (pProductos.cbMarcas.getSelectedIndex() != 0) {
                         modMarcas.setDescripcion(pProductos.cbMarcas.getSelectedItem().toString());
@@ -488,6 +487,50 @@ public class Control implements ActionListener {
             
             pProductos.txtIdProducto.setText(Integer.toString(modProducto.getIdProducto()+1));
             
+        }
+        
+        if(e.getSource().equals(pProductos.btnConsultar)){
+            
+            pProductos.activarConsulta();
+               
+        }
+        
+        if(e.getSource().equals(pProductos.btnBuscar)){
+            
+            if (!pProductos.txtIdCategoria.getText().equals(null)) {
+
+                modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));
+                if (conProducto.buscar(modProducto)) {
+
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Registro Localizado", "Confirmacion", 1);
+                    
+                    pProductos.txtDescripcion.setText(modProducto.getDescripcion());
+                    pProductos.txtIdMarca.setText(Integer.toString(modProducto.getIdMarca()));
+                    pProductos.txtStock.setText(Double.toString(modProducto.getStock()));
+                    pProductos.txtUMedida.setText(modProducto.getuMedida());
+                    pProductos.txtIdCategoria.setText(Integer.toString(modProducto.getIdCategoria()));
+                    pProductos.txtStockMinimo.setText(Double.toString(modProducto.getStockMinimo()));
+                    pProductos.btnModificar.setEnabled(true);
+                    
+                    modMarcas.setIdMarca(Integer.parseInt(pProductos.txtIdMarca.getText()));
+                    if(conMarcas.buscar(modMarcas)){
+                        pProductos.cbMarcas.setSelectedItem(modMarcas.getDescripcion());
+                    }
+                    
+                    modCateProducto.setIdCategoria(Integer.parseInt(pProductos.txtIdCategoria.getText()));
+                    if(conCateProducto.buscar(modCateProducto)){
+                        pProductos.cbcategoria.setSelectedItem(modCateProducto.getDescripcion());
+                        
+                    }
+                    
+                    
+                    pProductos.activarModificaciones();
+
+                } else {
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Registro No Localizado", "Error", 0);
+                    pProductos.txtIdProducto.requestFocus();
+                }
+            }    
         }
 
 //            CATEGORIA PRODUCTOS
@@ -580,6 +623,7 @@ public class Control implements ActionListener {
 
                 modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));
                 modProducto.setDescripcion(pProductos.txtDescripcion.getText());
+                modProducto.setIdMarca(Integer.parseInt(pProductos.txtIdMarca.getText()));
                 modProducto.setStock(Double.parseDouble(pProductos.txtStock.getText()));
                 modProducto.setuMedida(pProductos.txtUMedida.getText());
                 modProducto.setIdCategoria(Integer.parseInt(pProductos.txtIdCategoria.getText()));
