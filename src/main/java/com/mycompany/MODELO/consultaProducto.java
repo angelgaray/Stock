@@ -42,8 +42,8 @@ public class consultaProducto extends Conexion {
 
         ps = null;
         con = getConnection();
-        String sql = "UPDATE  producto SET idProducto=?,descripcion=?, marca=?, stock=?, unidadMedida=?,idCategoria=?,"
-                + "stockMinimo=? WHERE codigo=?";
+        String sql = "UPDATE  producto SET idProducto=?,descripcion=?,stock=?, unidadMedida=?,idCategoria=?,"
+                + "stockMinimo=?, idMarca=? WHERE idProducto=?";
         try {
             ps = con.prepareStatement(sql);
 
@@ -53,7 +53,8 @@ public class consultaProducto extends Conexion {
             ps.setString(4, pro.getuMedida());
             ps.setInt(5, pro.getIdCategoria());
             ps.setDouble(6, pro.getStockMinimo());
-            ps.setInt(7, pro.getCodigo());
+            ps.setInt(7, pro.getIdMarca());
+            ps.setInt(8, pro.getCodigo());
 
             ps.execute();
             return true;

@@ -2,7 +2,7 @@ package com.mycompany.CONTROLADOR;
 
 import com.mycompany.VISTA.PantallaCategoriaProductos;
 import com.mycompany.VISTA.PantallaEmpleado;
-import VISTA.PantallaEntradasSalidas;
+import com.mycompany.VISTA.PantallaEntradasSalidas;
 import com.mycompany.VISTA.PantallaMarcas;
 import com.mycompany.VISTA.PantallaPrincipal;
 import com.mycompany.VISTA.PantallaProductos;
@@ -41,7 +41,7 @@ public class Control implements ActionListener {
     private final consultaCategoriaProductos conCateProducto;
     private final PantallaCategoriaProductos pCateProductos;
 
-    private final PantallaEntradasSalidas pEtradasSalidas;
+    private final PantallaEntradasSalidas pEntradasSalidas;
 
     private final PantallaMarcas pMarcas;
     private final Marcas modMarcas;
@@ -78,7 +78,7 @@ public class Control implements ActionListener {
         conCateProducto = new consultaCategoriaProductos();
 
         //        Instancias de EntradasSalidas
-        pEtradasSalidas = new PantallaEntradasSalidas();
+        pEntradasSalidas = new PantallaEntradasSalidas();
 
         //        Instancias de Marcas
         pMarcas = new PantallaMarcas();
@@ -143,10 +143,10 @@ public class Control implements ActionListener {
         this.pCateProductos.btnAtras.addActionListener(this);
 
         //   ESCUCHADOR DE EVENTOS PANTALLA ENTRADAS-SALIDAS PRODUCTOS
-        this.pEtradasSalidas.btnAtras.addActionListener(this);
-        this.pEtradasSalidas.ItemEntradaProducto.addActionListener(this);
-        this.pEtradasSalidas.btnBBuscar.addActionListener(this);
-        this.pEtradasSalidas.btnCancelar.addActionListener(this);
+        this.pEntradasSalidas.btnAtras.addActionListener(this);
+        this.pEntradasSalidas.ItemEntradaProducto.addActionListener(this);
+        this.pEntradasSalidas.btnBBuscar.addActionListener(this);
+        this.pEntradasSalidas.btnCancelar.addActionListener(this);
 
         //   ESCUCHADOR DE EVENTOS PANTALLA Marcas
         this.pMarcas.btnVolver.addActionListener(this);
@@ -238,7 +238,7 @@ public class Control implements ActionListener {
         }
         if (e.getSource().equals(pPrincipal.btnMovimientosProductos)) {
             pPrincipal.ventPrincipal.setVisible(false);
-            pEtradasSalidas.ventEntradaSalidasProductos.setVisible(true);
+            pEntradasSalidas.ventEntradaSalidasProductos.setVisible(true);
         }
 
         if (e.getSource().equals(pPrincipal.btnMarcas)) {
@@ -470,6 +470,7 @@ public class Control implements ActionListener {
 
             pProductos.botonCancelar();
             pProductos.cbcategoria.setSelectedIndex(0);
+            pProductos.limpiar();
         }
 
         if (e.getSource().equals(pProductos.btnAtras)) {
@@ -504,6 +505,7 @@ public class Control implements ActionListener {
 
                     JOptionPane.showMessageDialog(pProductos.ventProductos, "Registro Localizado", "Confirmacion", 1);
                     
+                    pProductos.txtCodigo.setText(Integer.toString(modProducto.getIdProducto()));
                     pProductos.txtDescripcion.setText(modProducto.getDescripcion());
                     pProductos.txtIdMarca.setText(Integer.toString(modProducto.getIdMarca()));
                     pProductos.txtStock.setText(Double.toString(modProducto.getStock()));
@@ -532,8 +534,69 @@ public class Control implements ActionListener {
                 }
             }    
         }
+        
+         //Ejecutor de eventos pantalla Productos
+        if (e.getSource().equals(pProductos.btnCargar)) {
 
-//            CATEGORIA PRODUCTOS
+            if (!pProductos.txtDescripcion.getText().isEmpty() && !pProductos.txtIdCategoria.getText().isEmpty()
+                    && !pProductos.txtIdProducto.getText().isEmpty() && !pProductos.txtIdMarca.getText().isEmpty() && !pProductos.txtStock.getText().isEmpty()
+                    && !pProductos.txtStockMinimo.getText().isEmpty() && !pProductos.txtUMedida.getText().isEmpty()) {
+
+                modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));
+                modProducto.setDescripcion(pProductos.txtDescripcion.getText());
+                modProducto.setIdMarca(Integer.parseInt(pProductos.txtIdMarca.getText()));
+                modProducto.setStock(Double.parseDouble(pProductos.txtStock.getText()));
+                modProducto.setuMedida(pProductos.txtUMedida.getText());
+                modProducto.setIdCategoria(Integer.parseInt(pProductos.txtIdCategoria.getText()));
+                modProducto.setStockMinimo(Double.parseDouble(pProductos.txtStockMinimo.getText()));
+
+                if (conProducto.registrar(modProducto)) {
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Cargado Correctamente", "Confirmacion", 1);
+                    pProductos.limpiar();
+                    pProductos.botonCancelar();
+
+                } else {
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Error al Cargar Producto", "Error", 0);
+                }
+            } else {
+                JOptionPane.showMessageDialog(pProductos.ventProductos, "Todos los Campos son Obligatorios", "Error", 0);
+            }
+
+        }
+        
+        if (e.getSource().equals(pProductos.btnActualizar)) {
+
+            if (!pProductos.txtDescripcion.getText().isEmpty() && !pProductos.txtIdCategoria.getText().isEmpty()
+                    && !pProductos.txtIdProducto.getText().isEmpty() && !pProductos.txtIdMarca.getText().isEmpty() && !pProductos.txtStock.getText().isEmpty()
+                    && !pProductos.txtStockMinimo.getText().isEmpty() && !pProductos.txtUMedida.getText().isEmpty()) {
+
+                modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));
+                modProducto.setDescripcion(pProductos.txtDescripcion.getText());
+                modProducto.setIdMarca(Integer.parseInt(pProductos.txtIdMarca.getText()));
+                modProducto.setStock(Double.parseDouble(pProductos.txtStock.getText()));
+                modProducto.setuMedida(pProductos.txtUMedida.getText());
+                modProducto.setIdCategoria(Integer.parseInt(pProductos.txtIdCategoria.getText()));
+                modProducto.setStockMinimo(Double.parseDouble(pProductos.txtStockMinimo.getText()));
+                modProducto.setCodigo(Integer.parseInt(pProductos.txtCodigo.getText()));
+
+                if (conProducto.modificar(modProducto)) {
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Cambios Guardados Correctamente", "Confirmacion", 1);
+                    pProductos.limpiar();
+                    pProductos.botonCancelar();
+
+                } else {
+                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Error al Actualizar Producto", "Error", 0);
+                }
+            } else {
+                JOptionPane.showMessageDialog(pProductos.ventProductos, "Todos los Campos son Obligatorios", "Error", 0);
+            }
+
+        }
+        
+        
+        
+
+//            PANTALLA CATEGORIA PRODUCTOS
         if (e.getSource().equals(pCateProductos.btnBuscar)) {
 
             if (!pCateProductos.txtIdCategoria.getText().equals(null)) {
@@ -614,57 +677,30 @@ public class Control implements ActionListener {
             }
         }
 
-        //Ejecutor de eventos pantalla Productos
-        if (e.getSource().equals(pProductos.btnCargar)) {
-
-            if (!pProductos.txtDescripcion.getText().isEmpty() && !pProductos.txtIdCategoria.getText().isEmpty()
-                    && !pProductos.txtIdProducto.getText().isEmpty() && !pProductos.txtIdMarca.getText().isEmpty() && !pProductos.txtStock.getText().isEmpty()
-                    && !pProductos.txtStockMinimo.getText().isEmpty() && !pProductos.txtUMedida.getText().isEmpty()) {
-
-                modProducto.setIdProducto(Integer.parseInt(pProductos.txtIdProducto.getText()));
-                modProducto.setDescripcion(pProductos.txtDescripcion.getText());
-                modProducto.setIdMarca(Integer.parseInt(pProductos.txtIdMarca.getText()));
-                modProducto.setStock(Double.parseDouble(pProductos.txtStock.getText()));
-                modProducto.setuMedida(pProductos.txtUMedida.getText());
-                modProducto.setIdCategoria(Integer.parseInt(pProductos.txtIdCategoria.getText()));
-                modProducto.setStockMinimo(Double.parseDouble(pProductos.txtStockMinimo.getText()));
-
-                if (conProducto.registrar(modProducto)) {
-                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Cargado Correctamente", "Confirmacion", 1);
-                    pProductos.limpiar();
-                    pProductos.botonCancelar();
-
-                } else {
-                    JOptionPane.showMessageDialog(pProductos.ventProductos, "Error al Cargar Producto", "Error", 0);
-                }
-            } else {
-                JOptionPane.showMessageDialog(pProductos.ventProductos, "Todos los Campos son Obligatorios", "Error", 0);
-            }
-
-        }
+       
 
         //EJECUTOR DE EVENTOS Pantalla ENTRADAS SALIDAS PRODUCTOS
-        if (e.getSource().equals(pEtradasSalidas.btnAtras)) {
-            pEtradasSalidas.ventEntradaSalidasProductos.setVisible(false);
+        if (e.getSource().equals(pEntradasSalidas.btnAtras)) {
+            pEntradasSalidas.ventEntradaSalidasProductos.setVisible(false);
             pPrincipal.ventPrincipal.setVisible(true);
         }
-        if (e.getSource().equals(pEtradasSalidas.ItemEntradaProducto)) {
+        if (e.getSource().equals(pEntradasSalidas.ItemEntradaProducto)) {
 
-            pEtradasSalidas.activarIngresoProducto();
-            pEtradasSalidas.botonNuevo();
+            pEntradasSalidas.activarIngresoProducto();
+            pEntradasSalidas.botonNuevo();
         }
-        if (e.getSource().equals(pEtradasSalidas.btnBBuscar)) {
+        if (e.getSource().equals(pEntradasSalidas.btnBBuscar)) {
 
-            if (pEtradasSalidas.checkId.isSelected()) {
+            if (pEntradasSalidas.checkId.isSelected()) {
 //                     JOptionPane.showMessageDialog(this.pEtradasSalidas, "");
 
-                if (!pEtradasSalidas.txtIdProducto.getText().isEmpty() && pEtradasSalidas.checkId.isSelected()) {
+                if (!pEntradasSalidas.txtIdProducto.getText().isEmpty() && pEntradasSalidas.checkId.isSelected()) {
 
                 }
             }
         }
-        if (e.getSource().equals(pEtradasSalidas.btnCancelar)) {
-            pEtradasSalidas.cancelarTodo();
+        if (e.getSource().equals(pEntradasSalidas.btnCancelar)) {
+            pEntradasSalidas.cancelarTodo();
 
         }
 
@@ -742,7 +778,7 @@ public class Control implements ActionListener {
                 modMarcas.setDescripcion(pMarcas.txtDescripcion.getText());
                 if (conMarcas.modificar(modMarcas)) {
                     JOptionPane.showMessageDialog(pMarcas.ventMarcas, "Registro Modificado Correctamente", "Confirmación", 1);
-                    pCateProductos.cancelar();
+                    pMarcas.botonCancelar();
                 } else {
                     JOptionPane.showMessageDialog(pMarcas.ventMarcas, "Error al Modificar Registro", "Confirmación", 1);
                 }

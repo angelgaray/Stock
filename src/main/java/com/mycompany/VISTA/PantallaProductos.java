@@ -18,7 +18,7 @@ public class PantallaProductos {
     public JFrame ventProductos;
     public JLabel etiIdProducto, etiDescripcion, etiMarca, etiStock, etiUnidadMedida,
             etiCategoria, etiStockMinimo;
-    public JTextField txtIdProducto, txtDescripcion, txtIdMarca, txtStock, txtStockMinimo, txtUMedida, txtIdCategoria;
+    public JTextField txtIdProducto, txtDescripcion, txtIdMarca, txtStock, txtStockMinimo, txtUMedida, txtIdCategoria,txtCodigo;
     public JButton btnNuevo, btnCargar, btnModificar, btnConsultar, btnBuscar, btnActualizar, btnCancelar, btnAtras,btnIngresarMarcas,btnIngresarCategoria;
     public JComboBox cbcategoria, cbMarcas;
 
@@ -43,7 +43,10 @@ public class PantallaProductos {
         txtIdProducto.setBounds(130, 30, 200, 30);
 
         ventProductos.add(txtIdProducto);
-        txtIdProducto.setText("id ");
+        
+        txtCodigo= new JTextField();
+        txtCodigo.setBounds(130, 0, 100, 20);
+        ventProductos.add(txtCodigo);
 
         etiDescripcion = new JLabel("Descripcion");
         etiDescripcion.setBounds(30, 70, 200, 30);
@@ -242,6 +245,7 @@ public class PantallaProductos {
         txtStockMinimo.setText("");
         txtUMedida.setText("");
         txtIdCategoria.setText("");
+        txtCodigo.setText("");
     }
 
     public void mayuscula(JTextField a) {

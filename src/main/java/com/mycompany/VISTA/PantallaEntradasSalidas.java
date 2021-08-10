@@ -1,6 +1,5 @@
-package VISTA;
+package com.mycompany.VISTA;
 
-import com.mycompany.VISTA.LimitarCaracter;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;
